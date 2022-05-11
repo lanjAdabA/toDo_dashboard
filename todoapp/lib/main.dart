@@ -1,6 +1,9 @@
 // ignore_for_file: use_key_in_widget_constructors
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 void main() => runApp(const MyApp());
 
@@ -37,53 +40,99 @@ class _MainPageState extends State<MainPage> {
           leading: const Icon(Icons.menu),
           actions: const [
             Icon(Icons.home),
-            Padding(padding: EdgeInsets.only(right: 16))
+            Padding(padding: EdgeInsets.only(right: 12))
           ],
         ),
-        body: ListView(
-          padding: const EdgeInsets.all(16),
+        body: Column(
           children: [
             buildQuoteCard(),
-            Row(
+            GridView.count(
+              shrinkWrap: true,
+              primary: false,
+              padding: const EdgeInsets.all(20),
+              crossAxisCount: 2,
               children: [
-                buildRoundedCard(),
+                buildRoundedCard1(),
+                buildRoundedCard1(),
+                buildRoundedCard1(),
                 buildRoundedCard1(),
               ],
             ),
-            Row(
-              children: [
-                buildRoundedCard2(),
-                buildRoundedCard3(),
-              ],
-            ),
           ],
         ),
       );
 
-  Widget buildQuoteCard() => Card(
+  buildQuoteCard() => Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         child: Padding(
-          padding: const EdgeInsets.all(12),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text('Most Priority Task',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.red,
-                  )),
-              Icon(Icons.work),
-              SizedBox(height: 12),
-              Text(
-                'task title',
-                style: TextStyle(
-                  fontSize: 10,
-                ),
+          padding: const EdgeInsets.all(20),
+          child: Row(
+            children: [
+              const Align(
+                alignment: Alignment.topRight,
               ),
-              Text(
-                'task title description',
-                style: TextStyle(
-                  fontSize: 10,
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Most Priority Task",
+                    style: TextStyle(color: Colors.red),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Icon(
+                        Icons.work,
+                        size: 40,
+                        color: Colors.brown,
+                      ),
+                      const Icon(
+                        Icons.check_box_outline_blank,
+                        color: Colors.grey,
+                        size: 24,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            "Task Title",
+                          ),
+                          Text(
+                            "Task Title Description",
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ],
+              ),
+              Center(
+                child: Column(
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: const [
+                        /* Align(
+                          alignment: Alignment.centerRight,
+                        ),
+                        */
+                        Icon(
+                          Icons.more_horiz_outlined,
+                          color: Colors.red,
+                          size: 38,
+                        ),
+                        Text(
+                          "Start",
+                          style: TextStyle(color: Colors.green),
+                        ),
+                        Text("2:00:00"),
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ],
@@ -91,14 +140,14 @@ class _MainPageState extends State<MainPage> {
         ),
       );
 
-  Widget buildRoundedCard() => Card(
+  buildRoundedCard1() => Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
         child: Container(
           padding: const EdgeInsets.all(16),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: const [
               Text(
                 'Rounded card',
@@ -108,94 +157,8 @@ class _MainPageState extends State<MainPage> {
                 ),
               ),
               SizedBox(
-                height: 4,
-                width: 50,
-              ),
-              Text(
-                'This card',
-                style: TextStyle(fontSize: 20),
-              ),
-            ],
-          ),
-        ),
-      );
-
-  Widget buildRoundedCard1() => Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Container(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text(
-                'Rounded card',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(
-                height: 4,
-                width: 50,
-              ),
-              Text(
-                'This card',
-                style: TextStyle(fontSize: 20),
-              ),
-            ],
-          ),
-        ),
-      );
-  Widget buildRoundedCard2() => Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Container(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text(
-                'Rounded card',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(
-                height: 4,
-                width: 50,
-              ),
-              Text(
-                'This card',
-                style: TextStyle(fontSize: 20),
-              ),
-            ],
-          ),
-        ),
-      );
-
-  Widget buildRoundedCard3() => Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Container(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text(
-                'Rounded card',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(
-                height: 4,
-                width: 50,
+                height: 12,
+                width: 1,
               ),
               Text(
                 'This card',
