@@ -35,6 +35,10 @@ class _MainPageState extends State<MainPage> {
         appBar: AppBar(
           title: Text(widget.title),
           leading: const Icon(Icons.menu),
+          actions: const [
+            Icon(Icons.home),
+            Padding(padding: EdgeInsets.only(right: 16))
+          ],
         ),
         body: ListView(
           padding: const EdgeInsets.all(16),
@@ -63,12 +67,12 @@ class _MainPageState extends State<MainPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
-              Text(
-                'Most Priority Task',
-                style: TextStyle(
-                  fontSize: 24,
-                ),
-              ),
+              Text('Most Priority Task',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.red,
+                  )),
+              Icon(Icons.work),
               SizedBox(height: 12),
               Text(
                 'task title',
