@@ -33,9 +33,8 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text(
-            widget.title,
-          ),
+          title: Text(widget.title),
+          leading: const Icon(Icons.menu),
         ),
         body: ListView(
           padding: const EdgeInsets.all(16),
@@ -58,19 +57,30 @@ class _MainPageState extends State<MainPage> {
       );
 
   Widget buildQuoteCard() => Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
               Text(
-                'sample',
-                style: TextStyle(fontSize: 24),
+                'Most Priority Task',
+                style: TextStyle(
+                  fontSize: 24,
+                ),
               ),
               SizedBox(height: 12),
               Text(
-                'sample1',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                'task title',
+                style: TextStyle(
+                  fontSize: 10,
+                ),
+              ),
+              Text(
+                'task title description',
+                style: TextStyle(
+                  fontSize: 10,
+                ),
               ),
             ],
           ),
