@@ -1,99 +1,194 @@
-// ignore_for_file: unnecessary_new, unused_import
+// ignore_for_file: use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-
-import 'package:dashboard/dashboard.dart';
 
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  static const String title = 'DashBoard';
+
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Flutter Demo',
-      theme: new ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      // home: new Dashboard(title: 'Flutter Demo Home Page'),
-      home: const Dashboard(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
+  Widget build(BuildContext context) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: title,
+        theme: ThemeData(primarySwatch: Colors.amber),
+        home: const MainPage(title: title),
+      );
 }
 
-class Dashboard extends StatefulWidget {
-  const Dashboard({Key? key}) : super(key: key);
+class MainPage extends StatefulWidget {
+  final String title;
+
+  const MainPage({
+    required this.title,
+  });
 
   @override
-  _DashboardState createState() => _DashboardState();
+  _MainPageState createState() => _MainPageState();
 }
 
-class _DashboardState extends State<Dashboard> {
-  get actionsIconTheme => null;
-
+class _MainPageState extends State<MainPage> {
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("DashBoard"),
-        elevation: .1,
-        backgroundColor: Colors.orange[100],
-      ),
-      body: Container(
-        padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 2.0),
-        child: GridView.count(
-          crossAxisCount: 2,
-          padding: const EdgeInsets.all(3.0),
-          children: <Widget>[
-            makeDashboardItem("Most priority task", Icons.star_border),
-            makeDashboardItem("work", Icons.add_business),
-            makeDashboardItem("work", Icons.mark_unread_chat_alt_rounded),
-            makeDashboardItem("work", Icons.account_box_rounded),
-            makeDashboardItem("work", Icons.sports_martial_arts_outlined),
-          ],
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          title: Text(
+            widget.title,
+          ),
         ),
-      ),
-    );
-  }
-
-  Card makeDashboardItem(String title, IconData icon) {
-    return Card(
-        elevation: 1.0,
-        margin: const EdgeInsets.all(8.0),
-        child: Container(
-          decoration:
-              const BoxDecoration(color: Color.fromRGBO(220, 220, 220, 1.0)),
-          child: new InkWell(
-            onTap: () {},
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisSize: MainAxisSize.min,
-              verticalDirection: VerticalDirection.down,
-              children: <Widget>[
-                const SizedBox(height: 50),
-                Center(
-                    child: Icon(
-                  icon,
-                  size: 50,
-                  color: Colors.black,
-                )),
-                const Text(
-                  "5 tasks",
-                  textAlign: TextAlign.end,
-                ),
-                const Text("new"),
-                const SizedBox(height: 20.0),
-                new Center(
-                  child: new Text(title,
-                      style:
-                          const TextStyle(fontSize: 18.0, color: Colors.black)),
-                )
+        body: ListView(
+          padding: const EdgeInsets.all(16),
+          children: [
+            buildQuoteCard(),
+            Row(
+              children: [
+                buildRoundedCard(),
+                buildRoundedCard1(),
               ],
             ),
+            Row(
+              children: [
+                buildRoundedCard2(),
+                buildRoundedCard3(),
+              ],
+            ),
+          ],
+        ),
+      );
+
+  Widget buildQuoteCard() => Card(
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              Text(
+                'sample',
+                style: TextStyle(fontSize: 24),
+              ),
+              SizedBox(height: 12),
+              Text(
+                'sample1',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+            ],
           ),
-        ));
-  }
+        ),
+      );
+
+  Widget buildRoundedCard() => Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              Text(
+                'Rounded card',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: 4,
+                width: 50,
+              ),
+              Text(
+                'This card',
+                style: TextStyle(fontSize: 20),
+              ),
+            ],
+          ),
+        ),
+      );
+
+  Widget buildRoundedCard1() => Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              Text(
+                'Rounded card',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: 4,
+                width: 50,
+              ),
+              Text(
+                'This card',
+                style: TextStyle(fontSize: 20),
+              ),
+            ],
+          ),
+        ),
+      );
+  Widget buildRoundedCard2() => Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              Text(
+                'Rounded card',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: 4,
+                width: 50,
+              ),
+              Text(
+                'This card',
+                style: TextStyle(fontSize: 20),
+              ),
+            ],
+          ),
+        ),
+      );
+
+  Widget buildRoundedCard3() => Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              Text(
+                'Rounded card',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: 4,
+                width: 50,
+              ),
+              Text(
+                'This card',
+                style: TextStyle(fontSize: 20),
+              ),
+            ],
+          ),
+        ),
+      );
 }
