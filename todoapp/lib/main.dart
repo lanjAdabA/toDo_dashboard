@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp(
         debugShowCheckedModeBanner: false,
         title: title,
-        theme: ThemeData(primarySwatch: Colors.orange),
+        theme: ThemeData(primarySwatch: Colors.grey),
         home: const MainPage(title: title),
       );
 }
@@ -36,7 +36,7 @@ class _MainPageState extends State<MainPage> {
           title: Text(widget.title),
           leading: const Icon(Icons.menu),
           actions: const [
-            Icon(Icons.home),
+            Icon(Icons.house_rounded),
             Padding(padding: EdgeInsets.only(right: 12))
           ],
         ),
@@ -74,7 +74,10 @@ class _MainPageState extends State<MainPage> {
                 children: [
                   const Text(
                     "Most Priority Task",
-                    style: TextStyle(color: Colors.red, fontSize: 16),
+                    style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -121,7 +124,8 @@ class _MainPageState extends State<MainPage> {
                   ),
                   Text(
                     "Start",
-                    style: TextStyle(color: Colors.green),
+                    style: TextStyle(
+                        color: Colors.green, fontWeight: FontWeight.w700),
                   ),
                   Text("2:00:00"),
                 ],
@@ -143,13 +147,16 @@ class _MainPageState extends State<MainPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: const [
                     Icon(
-                      Icons.work_outline_rounded,
+                      Icons.work_rounded,
                       size: 32,
                       color: Colors.brown,
                     ),
                     Text(
                       "5 tasks",
-                      style: TextStyle(color: Colors.black, fontSize: 32),
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 32,
+                          fontWeight: FontWeight.w800),
                     ),
                   ],
                 ),
@@ -161,12 +168,17 @@ class _MainPageState extends State<MainPage> {
                         style: TextStyle(color: Colors.black, fontSize: 24)),
                     const Text("office project work",
                         style: TextStyle(color: Colors.black, fontSize: 10)),
+                    const Text(""),
+                    const Text(""),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: const [
                         Text("2-completed",
                             style:
                                 TextStyle(color: Colors.green, fontSize: 14)),
+                        Text("|",
+                            style:
+                                TextStyle(color: Colors.black, fontSize: 16)),
                         Text("2-due",
                             style: TextStyle(color: Colors.red, fontSize: 14)),
                       ],
@@ -189,13 +201,16 @@ class _MainPageState extends State<MainPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: const [
                     Icon(
-                      Icons.home_outlined,
+                      Icons.house_rounded,
                       size: 32,
                       color: Colors.brown,
                     ),
                     Text(
                       "5 tasks",
-                      style: TextStyle(color: Colors.black, fontSize: 32),
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 32,
+                          fontWeight: FontWeight.w800),
                     ),
                   ],
                 ),
@@ -207,12 +222,17 @@ class _MainPageState extends State<MainPage> {
                         style: TextStyle(color: Colors.black, fontSize: 24)),
                     const Text("office project work",
                         style: TextStyle(color: Colors.black, fontSize: 10)),
+                    const Text(""),
+                    const Text(""),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: const [
                         Text("2-completed",
                             style:
                                 TextStyle(color: Colors.green, fontSize: 14)),
+                        Text("|",
+                            style:
+                                TextStyle(color: Colors.black, fontSize: 16)),
                         Text("2-due",
                             style: TextStyle(color: Colors.red, fontSize: 14)),
                       ],
